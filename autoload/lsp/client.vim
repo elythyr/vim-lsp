@@ -272,7 +272,7 @@ function! s:lsp_is_error(obj_or_response) abort
     if l:vt == type('')
         return len(a:obj_or_response) > 0
     elseif l:vt == type({})
-        return has_key(a:obj_or_response, 'error')
+        return !empty(get(a:obj_or_response, 'error', v:null))
     endif
     return 0
 endfunction
